@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>JqueryPagination</title>
+        <title>Drop Down Menu Using jQuery, Ajax by fetching JSON data</title>
         <link rel="stylesheet" href="css/bootstrap.css" >
         <link rel="stylesheet" href="css/main.css" >
         <script src="js/bootstrap.js" ></script>
@@ -32,20 +32,21 @@
                 padding: 15px;
                 margin: 0px;
             }
-            .side_nav_sub_menu{
+            .main_container{
+                margin-left: 25%;
+            }
+            [id*="side_nav_sub_menu"]{
                 background-color: #1b1e21;
                 margin-top: 0px;
                 display: flex;
                 flex-direction: column;
             }
-            .side_nav_sub_menu a{
+
+            [id*="side_nav_sub_menu"] a{
+                padding: 10px 20px;
                 text-decoration: none;
                 color: white;
-                padding: 10px;
-                border-bottom: 1px solid #292d32;
-            }
-            .main_container{
-                margin-left: 25%;
+                border-bottom: 1px solid #31373c;
             }
         </style>
     </head>
@@ -57,23 +58,12 @@
 
         <div class="main_container" >
             <div class="jumbotron">
-                <h1>Bootstrap Tutorial</h1>
-                <p>Bootstrap is the most popular HTML, CSS...</p>
+                <h1>Drop Down Menu</h1>
+                <p>Drop Down Menu Using jQuery, Ajax by fetching JSON data ...</p>
             </div>
         </div>
 
         <script>
-
-            //<div class="side_nav" >
-            //    <h6>Side Nav Name</h6>
-            //     <div class="side_nav_sub_menu" >
-            //         <a href="#" >Sum menu - 1</a>
-            //         <a href="#" >Sum menu - 2</a>
-            //         <a href="#" >Sum menu - 3</a>
-            //         <a href="#" >Sum menu - 4</a>
-            //         <a href="#" >Sum menu - 5</a>
-            //     </div>
-            //</div>
 
             $.ajax({
                 url: "LocalDataJson/sideNavMenu.json",
@@ -82,24 +72,21 @@
                 cache: false,
                 success: function(response){
 
-
-
                     for (var i = 0; i < response.sideNavMenu.length; i++) {
                         console.log(response.sideNavMenu[i].menuName);
 
-
                         $(".side_nav_container").append(" " +
-                            "<div class=\"side_nav\" >\n" +
+                            "<div class='side_nav' >\n" +
                             "    <h6>"+response.sideNavMenu[i].menuName+"</h6>\n" +
-                            "     <div class=\"side_nav_sub_menu\" >");
+                            "     <div id='side_nav_sub_menu"+i+"' >");
 
-                        console.log("----mainmenu----");
+                        console.log("----Sub Menu----");
 
                         for (var j = 0; j < response.sideNavMenu[i].subMenu.length; j++) {
 
                             console.log(response.sideNavMenu[i].subMenu[j].name);
+                            $("#side_nav_sub_menu"+i).append("<a href='#' >"+response.sideNavMenu[i].subMenu[j].name+"</a>");
 
-                            $(".side_nav_sub_menu").append("<a href=\"#\" >"+response.sideNavMenu[i].subMenu[j].name+"</a>");
                         }
 
                         $(".side_nav_container").append(" " +
