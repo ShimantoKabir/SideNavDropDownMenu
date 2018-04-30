@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JqueryPagination</title>
+        <link rel="stylesheet" href="css/bootstrap.css" >
+        <link rel="stylesheet" href="css/main.css" >
+        <script src="js/bootstrap.js" ></script>
+        <script src="js/jquery.js" ></script>
+        <script src="js/main.js" ></script>
+    </head>
+    <body>
+
+        <div class="jumbotron text-center">
+            <h1>Side Nav Drop Down Menu</h1>
+            <p id="width" >Search box and pagination</p>
+        </div>
+
+        
+
+        <script>
+            $.ajax({
+                url: "LocalDataJson/sideNavMenu.json",
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                success: function(response){
+                    for (var i = 0; i < response.sideNavMenu.length; i++) {
+                        console.log(response.sideNavMenu[i].menuName);
+                        console.log("----mainmenu----");
+                        for (var j = 0; j < response.sideNavMenu[i].subMenu.length; j++) {
+                            console.log("==submenu==");
+                            console.log(response.sideNavMenu[i].subMenu[j].name);
+                        }
+                    }
+                },
+                error:function (response) {
+                    alert("ERROR -> " + response);
+                }
+            });
+        </script>
+    </body>
+</html>

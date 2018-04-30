@@ -1,0 +1,36 @@
+{
+  "sideNavMenu": [
+    {
+      "menuName":"MohammadPur",
+      "icon":"fab fa-accusoft",
+      "subMenu" :[
+        {
+          "name":"pulpar",
+          "href": "#"
+        },
+        {
+          "name":"sonkor",
+          "href": "#"
+        },
+        {
+          "name":"katasur",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "menuName":"Dhanmondi",
+      "icon":"fas fa-address-book",
+      "subMenu" :[
+        {
+          "name":"Zigatola",
+          "href": "#"
+        },
+        {
+          "name":"Dhanmondi-15",
+          "href": "#"
+        }
+      ]
+    }
+  ]
+}
